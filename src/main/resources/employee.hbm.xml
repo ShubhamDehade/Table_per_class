@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="bean.Employee" table="employee">
+        <id name="id" column="eid"/>
+        <discriminator column="emptype"/>
+        <property name="name" column="ename"/>
+        <property name="email" column="empemail"/>
+        <property name="salary" column="esal"/>
+        <subclass name="bean.SE" discriminator-value="SEmp">
+                <property name="tool"/>
+        </subclass>
+        <subclass name="bean.HE" discriminator-value="HEmp">
+            <property name="hrs"/>
+        </subclass>
+        <subclass name="bean.Admin" discriminator-value="AdminEmp">
+        <property name="branch"/>
+    </subclass>
+    </class>
+</hibernate-mapping>
